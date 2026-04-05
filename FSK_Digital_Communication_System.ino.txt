@@ -1,0 +1,30 @@
+// FSK Digital Communication System
+// Transmits binary data using two frequencies
+
+const int outputPin = 9;
+
+int freq0 = 500;  // Frequency for binary 0
+int freq1 = 1000; // Frequency for binary 1
+
+String data = "10110011";
+
+void setup() {
+  pinMode(outputPin, OUTPUT);
+}
+
+void loop() {
+
+  for (int i = 0; i < data.length(); i++) {
+    
+    if (data[i] == '1') {
+      tone(outputPin, freq1);
+    } else {
+      tone(outputPin, freq0);
+    }
+
+    delay(500); // bit duration
+  }
+
+  noTone(outputPin);
+  delay(2000);
+}
